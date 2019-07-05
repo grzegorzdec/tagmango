@@ -25,12 +25,14 @@ android {
     productFlavors {
         foodie {
             dimension "type"
+            applicationId "com.sofomo.tagmango.foodie"
             buildConfigField "boolean", "FOODIE_MODE", "true"
             buildConfigField "boolean", "SELLER_MODE", "false"
         }
 
         seller {
             dimension "type"
+            applicationId "com.sofomo.tagmango.seller"
             buildConfigField "boolean", "FOODIE_MODE", "false"
             buildConfigField "boolean", "SELLER_MODE", "true"
         }
