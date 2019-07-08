@@ -16,8 +16,6 @@ import kotlinx.coroutines.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var toaster: Toaster
-    private var api: Service? = null
-    private var myJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,24 +27,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onDestroy() {
-        myJob?.cancel()
-        super.onDestroy()
-    }
-
     private fun init() {
-        api = Api.getApi()
         toaster = Toaster(this)
-        myJob = CoroutineScope(Dispatchers.IO).launch {
-            val result = getMeals()
-            withContext(Dispatchers.Main) {
-                result?.let {
-                    if(it.isNotEmpty()) {
-                        toaster.show(it[0].name)
-                    }
-                }
-            }
-        }
     }
 
     private fun setup() {
@@ -76,10 +58,4 @@ class MainActivity : AppCompatActivity() {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
-
-    private suspend fun getMeals(): List<Meal>? =
-        api?.let {
-            it.getAllMeals().await().body()
-        } ?: listOf()
-
 }
