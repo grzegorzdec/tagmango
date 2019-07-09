@@ -16,9 +16,9 @@ class MealItemViewModel : BaseViewModel() {
 
     @get:Bindable("meal")
     val name
-        get() = meal?.name
+        get() = meal?.let { "${it.name} (${it.price}) " }
 
     @get:Bindable("meal")
-    val price
-        get() = meal?.price
+    val description
+        get() = meal?.description
 }
