@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.grzegorzdec.tagmango.BaseFragment
@@ -28,6 +29,10 @@ class MenuFragment : BaseFragment() {
                 adapter = MenuListAdapter(ViewModelProviders.of(this@MenuFragment))
                 addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             }
+
+            repository.getAllMeals().observe(viewLifecycleOwner, Observer {
+                this.viewModel?.meals = it
+            })
         }.root
     }
 }
