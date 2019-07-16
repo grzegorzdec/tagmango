@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:view="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
-                  android:layout_height="200dp"
-                  view:cardBackgroundColor="#FFFFFF"
-    >
+    <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            view:cardBackgroundColor="#FFFFFF"
+            view:cardElevation="4dp">
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.name}" />
-
-
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:text="@{viewModel.name}"/>
 
     </androidx.cardview.widget.CardView>
 
@@ -20,7 +22,7 @@
 
         <variable
                 name="viewModel"
-                type="com.grzegorzdec.tagmango.seller.map.ClientItemViewModel" />
+                type="com.grzegorzdec.tagmango.seller.map.ClientItemViewModel"/>
     </data>
 
 </layout>

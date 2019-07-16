@@ -6,16 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.gms.maps.*
 import com.grzegorzdec.tagmango.R
-import android.content.pm.PackageManager
-import android.Manifest.permission.ACCESS_COARSE_LOCATION
-import androidx.core.app.ActivityCompat
-import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.widget.LinearLayout
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.gms.maps.GoogleMap
 import com.grzegorzdec.tagmango.BaseFragment
+import com.grzegorzdec.tagmango.common.HorizontalMarginItemDecoration
 import com.grzegorzdec.tagmango.databinding.FragmentMapBinding
 
 
@@ -38,8 +32,11 @@ class MapFragment : BaseFragment() {
     ): View? {
         val binding = FragmentMapBinding.inflate(inflater, container, false).apply {
             viewModel = this@MapFragment.viewModel
+            recyclerView.addItemDecoration(HorizontalMarginItemDecoration(resources.getDimensionPixelSize(R.dimen.client_item_offset)))
             recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            recyclerView.adapter = ClientsRecyclerAdapter(ViewModelProviders.of(this@MapFragment))
+            recyclerView.adapter = ClientsRecyclerAdapter(ViewModelProviders.of(this@MapFragment)) {
+                this@MapFragment.viewModel.selectedClient = it
+            }
         }
         mapView = binding.map.apply {
             onCreate(mapViewBundle)

@@ -8,8 +8,10 @@ import com.grzegorzdec.tagmango.databinding.ItemClientBinding
 import com.grzegorzdec.tagmango.model.Client
 import com.grzegorzdec.tagmango.tools.BindableAdapter
 
-class ClientsRecyclerAdapter(private val viewModelProvider: ViewModelProvider):
-RecyclerView.Adapter<ClientsRecyclerAdapter.ViewHolder>(),
+class ClientsRecyclerAdapter(
+    private val viewModelProvider: ViewModelProvider,
+    private val onClientClickListener: (Client) -> Unit
+): RecyclerView.Adapter<ClientsRecyclerAdapter.ViewHolder>(),
     BindableAdapter<List<Client>> {
 
     private var clients: List<Client> = emptyList()
@@ -27,6 +29,9 @@ RecyclerView.Adapter<ClientsRecyclerAdapter.ViewHolder>(),
         holder.binding.apply {
             viewModel = viewModelProvider.get(clients[position].id, ClientItemViewModel::class.java).apply {
                 client = clients[holder.adapterPosition]
+            }
+            root.setOnClickListener {
+                onClientClickListener(clients[holder.adapterPosition])
             }
         }
     }

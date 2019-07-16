@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
-<FrameLayout
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
-
-    <com.google.android.gms.maps.MapView
-            android:id="@+id/map"
+    <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="200dp"
-            app:mapMarkers="@{viewModel.clients}"
-    />
+            android:layout_marginBottom="80dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_gravity="bottom"
-            app:data="@{viewModel.clients}"
-    />
+        <com.google.android.gms.maps.MapView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="200dp"
+                app:mapMarkers="@{viewModel.clients}"
+                app:onMarkerClick="@{viewModel.onClientClickListener}"
+                app:selectedClient="@{viewModel.selectedClient}"
+        />
 
-</FrameLayout>
+        <FrameLayout
+                android:id="@+id/panel"
+                android:layout_width="match_parent" android:layout_height="100dp"
+                android:background="#FFF"
+                app:updateFrame="@{viewModel.selectedClient}"
+        />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="bottom"
+                android:clipToPadding="false"
+                app:data="@{viewModel.clients}"
+        />
+
+    </FrameLayout>
 
     <data>
 

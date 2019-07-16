@@ -1,7 +1,10 @@
 package com.grzegorzdec.tagmango.seller.map
 
+import android.view.View
+import android.widget.FrameLayout
 import androidx.databinding.BindingAdapter
 import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
@@ -24,6 +27,44 @@ fun mapMarkers(mapView: MapView, clients: List<Client>) {
             }
             val latLngBounds = latLngBuilder.build()
             googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 120))
+        }
+    }
+}
+
+@BindingAdapter("onMarkerClick")
+fun addMarkerClickListeners(mapView: MapView, onMarkerClickListener: GoogleMap.OnMarkerClickListener) {
+    mapView.getMapAsync { googleMap ->
+        googleMap.setOnMarkerClickListener(onMarkerClickListener)
+    }
+}
+
+@BindingAdapter("selectedClient")
+fun selectedClient(mapView: MapView, client: Client?) {
+    if(client != null) {
+        mapView.getMapAsync {
+            val latLng = LatLng(client.latitude, client.longitude)
+            if(it.cameraPosition.target.latitude != latLng.latitude || it.cameraPosition.target.longitude != latLng.longitude ) {
+                it.moveCamera(CameraUpdateFactory.newLatLng(LatLng(client.latitude, client.longitude)))
+            }
+        }
+    }
+}
+
+@BindingAdapter("updateFrame")
+fun selectedClient(layout: FrameLayout, client: Client?) {
+    if(client == null) {
+        if (layout.visibility == View.VISIBLE) {
+            layout.animate()
+                .translationY(0f)
+                .start()
+            layout.visibility = View.GONE
+        }
+    } else {
+        if (layout.visibility == View.GONE) {
+            layout.visibility = View.VISIBLE
+            layout.animate()
+                .translationY(layout.height.toFloat())
+                .start()
         }
     }
 }
