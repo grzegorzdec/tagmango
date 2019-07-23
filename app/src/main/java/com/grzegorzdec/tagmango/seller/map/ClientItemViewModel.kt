@@ -27,5 +27,6 @@ class ClientItemViewModel: BaseViewModel() {
         get() = client?.longitude
 
     @Bindable("client")
-    fun isSelected(): Boolean = client?.isSelected ?: false
+    fun isSelected(): Boolean
+            = client?.isSelected ?: false
 }

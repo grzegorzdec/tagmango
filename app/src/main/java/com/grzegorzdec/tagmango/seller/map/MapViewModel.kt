@@ -26,13 +26,14 @@ class MapViewModel(
     var selectedClient: Client? = null
         set(value) {
             if(field == value) {
-                clients.replace(field?.copy(isSelected = false)) {
-                    field?.id == it?.id
+                clients = clients.replace(value?.copy(isSelected = false)!!) {
+                    value.id == it.id
                 }
                 field = null
             } else {
-                clients.replace(field?.copy(isSelected = true)) {
-                    field?.id == it?.id
+                val updatedClients = clients.map { it.copy(isSelected = false) }
+                clients = updatedClients.replace(value?.copy(isSelected = true)!!) {
+                    value.id == it.id
                 }
                 field = value
             }
