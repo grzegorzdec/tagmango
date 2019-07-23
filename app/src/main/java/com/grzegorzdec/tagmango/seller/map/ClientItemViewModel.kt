@@ -25,4 +25,7 @@ class ClientItemViewModel: BaseViewModel() {
     @get:Bindable("client")
     val longitude
         get() = client?.longitude
+
+    @Bindable("client")
+    fun isSelected(): Boolean = client?.isSelected ?: false
 }

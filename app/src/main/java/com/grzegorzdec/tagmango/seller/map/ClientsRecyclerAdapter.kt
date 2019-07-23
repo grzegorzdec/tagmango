@@ -6,35 +6,28 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.grzegorzdec.tagmango.databinding.ItemClientBinding
 import com.grzegorzdec.tagmango.model.Client
-import com.grzegorzdec.tagmango.tools.BindableAdapter
 
 class ClientsRecyclerAdapter(
     private val viewModelProvider: ViewModelProvider,
+    private val mapViewModel: MapViewModel,
     private val onClientClickListener: (Client) -> Unit
-): RecyclerView.Adapter<ClientsRecyclerAdapter.ViewHolder>(),
-    BindableAdapter<List<Client>> {
+): RecyclerView.Adapter<ClientsRecyclerAdapter.ClientViewHolder>() {
 
-    private var clients: List<Client> = emptyList()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ClientViewHolder(ItemClientBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    override fun setData(data: List<Client>) {
-        clients = data
-    }
+    override fun getItemCount(): Int = mapViewModel.clients.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(ItemClientBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-
-    override fun getItemCount(): Int = clients.size
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ClientViewHolder, position: Int) {
         holder.binding.apply {
-            viewModel = viewModelProvider.get(clients[position].id, ClientItemViewModel::class.java).apply {
-                client = clients[holder.adapterPosition]
+                viewModel = viewModelProvider.get(mapViewModel.clients[position].id, ClientItemViewModel::class.java).apply {
+                    client = mapViewModel.clients[holder.adapterPosition]
+                }
+                root.setOnClickListener {
+                    onClientClickListener(mapViewModel.clients[holder.adapterPosition])
+                }
             }
-            root.setOnClickListener {
-                onClientClickListener(clients[holder.adapterPosition])
-            }
-        }
+        holder.binding.executePendingBindings()
     }
 
-    inner class ViewHolder(val binding: ItemClientBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ClientViewHolder(val binding: ItemClientBinding) : RecyclerView.ViewHolder(binding.root)
 }

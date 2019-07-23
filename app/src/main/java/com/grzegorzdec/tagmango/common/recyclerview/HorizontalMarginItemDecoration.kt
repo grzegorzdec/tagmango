@@ -1,4 +1,4 @@
-package com.grzegorzdec.tagmango.common
+package com.grzegorzdec.tagmango.common.recyclerview
 
 import android.graphics.Rect
 import android.view.View

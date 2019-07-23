@@ -1,12 +1,12 @@
 package com.grzegorzdec.tagmango.seller.map
 
-import android.util.Log
 import androidx.databinding.Bindable
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.Marker
 import com.grzegorzdec.tagmango.BR
 import com.grzegorzdec.tagmango.BaseViewModel
 import com.grzegorzdec.tagmango.api.Repository
+import com.grzegorzdec.tagmango.common.recyclerview.ListBinder
+import com.grzegorzdec.tagmango.common.replace
 import com.grzegorzdec.tagmango.model.Client
 import kotlinx.coroutines.launch
 
@@ -16,26 +16,41 @@ class MapViewModel(
 
     @get:Bindable
     var clients: List<Client> = emptyList()
+        set(value) {
+            field = value
+            listBinder.notifyDataChange(value)
+            registry.notifyChange(this@MapViewModel, BR.clients)
+        }
 
     @get:Bindable
     var selectedClient: Client? = null
         set(value) {
-            if(field == value) field = null
-            else field = value
-            Log.d("SelectedClient", "${field?.name}")
-            registry.notifyChange(this@MapViewModel, BR.client)
+            if(field == value) {
+                clients.replace(field?.copy(isSelected = false)) {
+                    field?.id == it?.id
+                }
+                field = null
+            } else {
+                clients.replace(field?.copy(isSelected = true)) {
+                    field?.id == it?.id
+                }
+                field = value
+            }
+            registry.notifyChange(this@MapViewModel, BR.selectedClient)
         }
+
+    @get:Bindable
+    val listBinder: ListBinder<Client> = ListBinder(ClientsDiffCallback())
 
     val onClientClickListener = GoogleMap.OnMarkerClickListener { marker ->
         selectedClient = clients.find { it.name == marker.title }
-        false
+        true
     }
 
     fun loadClients() {
         scope.launch {
             repository.getAllClients().apply {
                 clients = this ?: emptyList()
-                registry.notifyChange(this@MapViewModel, BR.clients)
             }
         }
     }

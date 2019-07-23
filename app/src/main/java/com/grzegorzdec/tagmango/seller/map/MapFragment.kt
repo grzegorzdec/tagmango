@@ -9,7 +9,7 @@ import com.grzegorzdec.tagmango.R
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.grzegorzdec.tagmango.BaseFragment
-import com.grzegorzdec.tagmango.common.HorizontalMarginItemDecoration
+import com.grzegorzdec.tagmango.common.recyclerview.HorizontalMarginItemDecoration
 import com.grzegorzdec.tagmango.databinding.FragmentMapBinding
 
 
@@ -32,9 +32,13 @@ class MapFragment : BaseFragment() {
     ): View? {
         val binding = FragmentMapBinding.inflate(inflater, container, false).apply {
             viewModel = this@MapFragment.viewModel
-            recyclerView.addItemDecoration(HorizontalMarginItemDecoration(resources.getDimensionPixelSize(R.dimen.client_item_offset)))
+            recyclerView.addItemDecoration(
+                HorizontalMarginItemDecoration(
+                    resources.getDimensionPixelSize(R.dimen.client_item_offset)
+                )
+            )
             recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            recyclerView.adapter = ClientsRecyclerAdapter(ViewModelProviders.of(this@MapFragment)) {
+            recyclerView.adapter = ClientsRecyclerAdapter(ViewModelProviders.of(this@MapFragment),  viewModel!!) {
                 this@MapFragment.viewModel.selectedClient = it
             }
         }
