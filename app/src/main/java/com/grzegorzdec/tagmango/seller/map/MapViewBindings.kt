@@ -29,7 +29,7 @@ fun mapMarkers(mapView: MapView, clients: List<Client>) {
                 )
             }
             val latLngBounds = latLngBuilder.build()
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 120))
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 120), 300, null)
         }
     }
 }
@@ -47,30 +47,8 @@ fun selectedClient(mapView: MapView, client: Client?) {
         mapView.getMapAsync {
             val latLng = LatLng(client.latitude, client.longitude)
             if(it.cameraPosition.target.latitude != latLng.latitude || it.cameraPosition.target.longitude != latLng.longitude ) {
-                it.moveCamera(CameraUpdateFactory.newLatLng(LatLng(client.latitude, client.longitude)))
+                it.animateCamera(CameraUpdateFactory.newLatLng(LatLng(client.latitude, client.longitude)), 300, null)
             }
-        }
-    }
-}
-
-@BindingAdapter("updateFrame")
-fun selectedClient(layout: PanelLayout, client: Client?) {
-    if(client == null) {
-        if (layout.visibility == View.VISIBLE) {
-            layout.animate()
-                .translationY(-layout.height.toFloat())
-                .onAnimationEnd { layout.visibility = View.GONE }
-                .start()
-        }
-    } else {
-        if (layout.visibility == View.GONE) {
-            layout.visibility = View.VISIBLE
-            layout.animate()
-                .translationY(0f)
-                .setListener(null)
-                .start()
-        } else {
-
         }
     }
 }

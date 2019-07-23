@@ -35,7 +35,7 @@ class MapViewModel(
                 clients = updatedClients.replace(value?.copy(isSelected = true)!!) {
                     value.id == it.id
                 }
-                field = value
+                field = value.copy(isSelected = true)
             }
             registry.notifyChange(this@MapViewModel, BR.selectedClient)
         }
