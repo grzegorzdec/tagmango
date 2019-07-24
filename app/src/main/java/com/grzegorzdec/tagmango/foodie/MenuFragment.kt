@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.grzegorzdec.tagmango.BaseFragment
 import com.grzegorzdec.tagmango.databinding.FragmentMenuBinding
 import com.grzegorzdec.tagmango.foodie.menu.MenuListAdapter
@@ -23,7 +24,10 @@ class MenuFragment : BaseFragment() {
     ): View? {
         return FragmentMenuBinding.inflate(inflater, container, false).apply {
             viewModel = this@MenuFragment.viewModel
-            recyclerView.adapter = MenuListAdapter(ViewModelProviders.of(this@MenuFragment))
+            recyclerView.run {
+                adapter = MenuListAdapter(ViewModelProviders.of(this@MenuFragment))
+                addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            }
         }.root
     }
 }

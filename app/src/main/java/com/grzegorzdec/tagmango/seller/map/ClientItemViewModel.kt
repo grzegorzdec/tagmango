@@ -2,10 +2,10 @@ package com.grzegorzdec.tagmango.seller.map
 
 import androidx.databinding.Bindable
 import com.grzegorzdec.tagmango.BR
-import com.grzegorzdec.tagmango.BaseViewModel
 import com.grzegorzdec.tagmango.model.Client
+import com.grzegorzdec.tagmango.tools.RegistryViewModel
 
-class ClientItemViewModel: BaseViewModel() {
+class ClientItemViewModel: RegistryViewModel() {
 
     @get:Bindable
     var client: Client? = null
