@@ -21,13 +21,13 @@ class MenuFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        FragmentMenuBinding.inflate(inflater, container, false).apply {
+    ): View? {
+        return FragmentMenuBinding.inflate(inflater, container, false).apply {
             viewModel = this@MenuFragment.viewModel
             recyclerView.run {
                 adapter = MenuListAdapter(ViewModelProviders.of(this@MenuFragment))
                 addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             }
         }.root
-
+    }
 }
