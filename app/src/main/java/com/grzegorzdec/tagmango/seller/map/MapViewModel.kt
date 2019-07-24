@@ -26,15 +26,17 @@ class MapViewModel(
     var selectedClient: Client? = null
         set(value) {
             if(field == value) {
-                clients = clients.replace(value?.copy(isSelected = false)!!) {
-                    value.id == it.id
-                }
+                clients = clients
+                    .replace(value?.copy(isSelected = false)!!) {
+                        value.id == it.id
+                    }
                 field = null
             } else {
-                val updatedClients = clients.map { it.copy(isSelected = false) }
-                clients = updatedClients.replace(value?.copy(isSelected = true)!!) {
-                    value.id == it.id
-                }
+                clients = clients
+                    .map { it.copy(isSelected = false) }
+                    .replace(value?.copy(isSelected = true)!!) {
+                        value.id == it.id
+                    }
                 field = value.copy(isSelected = true)
             }
             registry.notifyChange(this@MapViewModel, BR.selectedClient)
