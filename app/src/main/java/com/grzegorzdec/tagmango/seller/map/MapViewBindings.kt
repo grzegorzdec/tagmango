@@ -1,8 +1,5 @@
 package com.grzegorzdec.tagmango.seller.map
 
-import android.view.View
-import android.widget.FrameLayout
-import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -10,9 +7,7 @@ import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
-import com.grzegorzdec.tagmango.common.animation.onAnimationEnd
 import com.grzegorzdec.tagmango.model.Client
-import com.grzegorzdec.tagmango.seller.panel.PanelLayout
 
 @BindingAdapter("mapMarkers")
 fun mapMarkers(mapView: MapView, clients: List<Client>) {
