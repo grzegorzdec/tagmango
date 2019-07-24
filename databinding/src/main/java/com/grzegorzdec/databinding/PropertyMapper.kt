@@ -1,6 +1,6 @@
-package com.midrive.databinding
+package com.grzegorzdec.databinding
 
-import com.midrive.databinding.PropertyMapper.bindableResourceClass
+import com.grzegorzdec.databinding.PropertyMapper.bindableResourceClass
 import kotlin.reflect.KProperty
 
 /**

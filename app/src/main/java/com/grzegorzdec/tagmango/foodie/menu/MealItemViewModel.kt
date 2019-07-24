@@ -1,9 +1,9 @@
 package com.grzegorzdec.tagmango.foodie.menu
 
 import androidx.databinding.Bindable
+import com.grzegorzdec.databinding.bindable
 import com.grzegorzdec.tagmango.BaseViewModel
 import com.grzegorzdec.tagmango.model.Meal
-import com.midrive.databinding.bindable
 
 class MealItemViewModel : BaseViewModel() {
 

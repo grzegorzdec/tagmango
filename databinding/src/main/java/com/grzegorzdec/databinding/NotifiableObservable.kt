@@ -1,4 +1,4 @@
-package com.midrive.databinding
+package com.grzegorzdec.databinding
 
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
@@ -45,7 +45,10 @@ interface NotifiableObservable : Observable, LifecycleObserver {
 
             override fun notifyChange() {
                 if (changeRegisterProperty.isInitialized()) {
-                    changeRegistry.notifyCallbacks(delegator, ALL_PROPERTIES, null)
+                    changeRegistry.notifyCallbacks(
+                        delegator,
+                        ALL_PROPERTIES, null
+                    )
                 }
             }
 

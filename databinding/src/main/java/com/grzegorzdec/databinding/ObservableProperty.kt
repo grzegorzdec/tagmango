@@ -1,4 +1,4 @@
-package com.midrive.databinding
+package com.grzegorzdec.databinding
 
 import androidx.annotation.CallSuper
 import kotlin.properties.ReadWriteProperty

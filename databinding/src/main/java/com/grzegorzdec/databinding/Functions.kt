@@ -1,4 +1,4 @@
-package com.midrive.databinding
+package com.grzegorzdec.databinding
 
 object Functions {
     val areEqual: (first: Any?, second: Any?) -> Boolean = { first, second -> first == second }
