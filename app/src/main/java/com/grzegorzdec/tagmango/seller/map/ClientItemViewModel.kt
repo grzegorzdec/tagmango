@@ -26,7 +26,7 @@ class ClientItemViewModel: RegistryViewModel() {
     val longitude
         get() = client?.longitude
 
-    @Bindable("client")
-    fun isSelected(): Boolean
-            = client?.isSelected ?: false
+    @get:Bindable("client")
+    val isSelected: Boolean
+            get() = client?.isSelected ?: false
 }

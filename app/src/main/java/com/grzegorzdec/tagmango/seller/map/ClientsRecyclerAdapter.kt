@@ -9,23 +9,26 @@ import com.grzegorzdec.tagmango.model.Client
 
 class ClientsRecyclerAdapter(
     private val viewModelProvider: ViewModelProvider,
-    private val mapViewModel: MapViewModel,
+    private val mapViewModel: MapViewModel?,
     private val onClientClickListener: (Client) -> Unit
 ): RecyclerView.Adapter<ClientsRecyclerAdapter.ClientViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ClientViewHolder(ItemClientBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    override fun getItemCount(): Int = mapViewModel.clients.size
+    override fun getItemCount(): Int = mapViewModel?.clients?.size ?: 0
 
     override fun onBindViewHolder(holder: ClientViewHolder, position: Int) {
-        holder.binding.apply {
-                viewModel = viewModelProvider.get(mapViewModel.clients[position].id, ClientItemViewModel::class.java).apply {
-                    client = mapViewModel.clients[holder.adapterPosition]
-                }
+        mapViewModel?.let {
+            holder.binding.apply {
+                viewModel =
+                    viewModelProvider.get(mapViewModel.clients[position].id, ClientItemViewModel::class.java).apply {
+                        client = mapViewModel.clients[holder.adapterPosition]
+                    }
                 root.setOnClickListener {
                     onClientClickListener(mapViewModel.clients[holder.adapterPosition])
                 }
             }
+        }
         holder.binding.executePendingBindings()
     }
 

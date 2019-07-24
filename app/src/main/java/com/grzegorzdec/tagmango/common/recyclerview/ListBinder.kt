@@ -20,9 +20,7 @@ class ListBinder<E>(private val diffCallBack: AbstractDiffCallback<E>) {
     fun notifyDataChange(data: List<E>?) {
         Handler(Looper.getMainLooper()).post {
             val diffResult = calculateDiff(data)
-            if (onDataChangeListener != null) {
-                onDataChangeListener!!.onChange(diffResult)
-            }
+            onDataChangeListener?.onChange(diffResult)
         }
     }
 

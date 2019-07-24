@@ -39,12 +39,12 @@ class MapFragment : BaseFragment() {
             )
             recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             recyclerView.itemAnimator = null
-            recyclerView.adapter = ClientsRecyclerAdapter(ViewModelProviders.of(this@MapFragment),  viewModel!!) {
+            recyclerView.adapter = ClientsRecyclerAdapter(ViewModelProviders.of(this@MapFragment),  viewModel) {
                 this@MapFragment.viewModel.selectedClient = it
             }
-        }
-        mapView = binding.map.apply {
-            onCreate(mapViewBundle)
+            mapView = map.apply {
+                onCreate(mapViewBundle)
+            }
         }
         initMap()
         return binding.root
