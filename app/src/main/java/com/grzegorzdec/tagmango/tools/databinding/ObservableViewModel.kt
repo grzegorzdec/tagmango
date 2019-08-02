@@ -1,4 +1,4 @@
-package com.midrive.databinding
+package com.grzegorzdec.tagmango.tools.databinding
 
 import androidx.lifecycle.ViewModel
 

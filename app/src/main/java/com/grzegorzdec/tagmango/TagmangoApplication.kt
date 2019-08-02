@@ -1,7 +1,7 @@
 package com.grzegorzdec.tagmango
 
 import android.app.Application
-import com.midrive.databinding.PropertyMapper
+import com.grzegorzdec.tagmango.tools.databinding.PropertyMapper
 
 class TagmangoApplication : Application() {
 

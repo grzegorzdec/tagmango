@@ -1,6 +1,6 @@
-package com.midrive.databinding
+package com.grzegorzdec.tagmango.tools.databinding
 
-import com.midrive.databinding.PropertyMapper.bindableResourceClass
+import com.grzegorzdec.tagmango.tools.databinding.PropertyMapper.bindableResourceClass
 import kotlin.reflect.KProperty
 
 /**

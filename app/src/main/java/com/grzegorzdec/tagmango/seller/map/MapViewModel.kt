@@ -3,13 +3,11 @@ package com.grzegorzdec.tagmango.seller.map
 import androidx.databinding.Bindable
 import com.google.android.gms.maps.GoogleMap
 import com.grzegorzdec.tagmango.BR
-import com.grzegorzdec.tagmango.BaseViewModel
-import com.grzegorzdec.tagmango.api.Repository
 import com.grzegorzdec.tagmango.common.recyclerview.ListBinder
 import com.grzegorzdec.tagmango.common.replace
 import com.grzegorzdec.tagmango.model.Client
+import com.grzegorzdec.tagmango.repository.Repository
 import com.grzegorzdec.tagmango.tools.RegistryViewModel
-import com.midrive.databinding.bindable
 import kotlinx.coroutines.launch
 
 class MapViewModel(
