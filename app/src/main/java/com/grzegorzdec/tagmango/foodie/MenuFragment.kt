@@ -33,12 +33,13 @@ class MenuFragment : BaseFragment() {
             }
 
             repository.getAllMeals().observe(viewLifecycleOwner, Observer {
-                this.viewModel?.meals = it
+                this@MenuFragment.viewModel.meals = it
             })
 
             repository.getLikes().observe(viewLifecycleOwner, Observer {
-                this.viewModel?.likedMeals = it
+                this@MenuFragment.viewModel.likedMeals = it
             })
+
         }.root
     }
 }

@@ -2,7 +2,10 @@ package com.grzegorzdec.tagmango
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import com.google.zxing.integration.android.IntentIntegrator
 import com.grzegorzdec.tagmango.qr.show.QrShowDialogFragment
 import com.grzegorzdec.tagmango.tools.Toaster
@@ -53,5 +56,21 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        if (BuildConfig.FOODIE_MODE) {
+            menuInflater.inflate(R.menu.main_bottom_nav, menu)
+        }
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_cupon -> main_fragment.findNavController().navigate(R.id.action_menuFragment_to_couponFragment)
+        }
+
+        return true
     }
 }
