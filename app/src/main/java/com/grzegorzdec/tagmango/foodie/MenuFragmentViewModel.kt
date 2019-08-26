@@ -34,6 +34,7 @@ class MenuFragmentViewModel(private val repository: Repository) : BaseViewModel(
         fetchMeals()
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun fetchMeals() {
         loading = true
 

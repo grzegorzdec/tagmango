@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/stamp0"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/stamp1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompatResource="@{viewModel.stamp0Background}"/>
+
+        <TextView
+            android:id="@+id/stamp0Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.stamp0Date}"
+            app:layout_constraintBottom_toBottomOf="@id/stamp0"
+            app:layout_constraintEnd_toEndOf="@id/stamp0"
+            app:layout_constraintStart_toStartOf="@id/stamp0"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/stamp1"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/stamp2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/stamp0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompatResource="@{viewModel.stamp1Background}"/>
+
+        <TextView
+            android:id="@+id/stamp1Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.stamp1Date}"
+            app:layout_constraintBottom_toBottomOf="@id/stamp1"
+            app:layout_constraintEnd_toEndOf="@id/stamp1"
+            app:layout_constraintStart_toStartOf="@id/stamp1"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/stamp2"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/stamp3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/stamp1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompatResource="@{viewModel.stamp2Background}"/>
+
+        <TextView
+            android:id="@+id/stamp2Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.stamp2Date}"
+            app:layout_constraintBottom_toBottomOf="@id/stamp2"
+            app:layout_constraintEnd_toEndOf="@id/stamp2"
+            app:layout_constraintStart_toStartOf="@id/stamp2"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/stamp3"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/stamp2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompatResource="@{viewModel.stamp3Background}"/>
+
+        <TextView
+            android:id="@+id/stamp3Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.stamp3Date}"
+            app:layout_constraintBottom_toBottomOf="@id/stamp3"
+            app:layout_constraintEnd_toEndOf="@id/stamp3"
+            app:layout_constraintStart_toStartOf="@id/stamp3"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/stamp4"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/stamp5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/stamp0Date"
+            app:srcCompatResource="@{viewModel.stamp4Background}"/>
+
+        <TextView
+            android:id="@+id/stamp4Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.stamp4Date}"
+            app:layout_constraintBottom_toBottomOf="@id/stamp4"
+            app:layout_constraintEnd_toEndOf="@id/stamp4"
+            app:layout_constraintStart_toStartOf="@id/stamp4"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/stamp5"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/stamp6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/stamp4"
+            app:layout_constraintTop_toTopOf="@id/stamp4"
+            app:srcCompatResource="@{viewModel.stamp5Background}"/>
+
+        <TextView
+            android:id="@+id/stamp5Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.stamp5Date}"
+            app:layout_constraintBottom_toBottomOf="@id/stamp5"
+            app:layout_constraintEnd_toEndOf="@id/stamp5"
+            app:layout_constraintStart_toStartOf="@id/stamp5"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/stamp6"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/stamp7"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/stamp5"
+            app:layout_constraintTop_toTopOf="@id/stamp4"
+            app:srcCompatResource="@{viewModel.stamp6Background}"/>
+
+        <TextView
+            android:id="@+id/stamp6Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.stamp6Date}"
+            app:layout_constraintBottom_toBottomOf="@id/stamp6"
+            app:layout_constraintEnd_toEndOf="@id/stamp6"
+            app:layout_constraintStart_toStartOf="@id/stamp6"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/stamp7"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/stamp6"
+            app:layout_constraintTop_toTopOf="@id/stamp4"
+            app:srcCompatResource="@{viewModel.stamp7Background}"/>
+
+        <TextView
+            android:id="@+id/stamp7Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.stamp7Date}"
+            app:layout_constraintBottom_toBottomOf="@id/stamp7"
+            app:layout_constraintEnd_toEndOf="@id/stamp7"
+            app:layout_constraintStart_toStartOf="@id/stamp7"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.grzegorzdec.tagmango.coupon.CouponFragmentViewModel"/>
+    </data>
+</layout>

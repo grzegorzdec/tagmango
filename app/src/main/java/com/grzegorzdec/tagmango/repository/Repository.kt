@@ -28,4 +28,6 @@ class Repository(private val api: Service, private val database: TagmangoDB) {
 
     suspend fun getAllClients() = api.getAllClients().await().body()
 
+    suspend fun getUser(id: String) = api.getUser(id).await().body()
+
 }
