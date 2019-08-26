@@ -1,11 +1,14 @@
 package com.grzegorzdec.tagmango.foodie.menu
 
+import androidx.annotation.UiThread
 import androidx.databinding.Bindable
 import com.grzegorzdec.tagmango.BaseViewModel
 import com.grzegorzdec.tagmango.model.Meal
-import com.midrive.databinding.bindable
+import com.grzegorzdec.tagmango.repository.Repository
+import com.grzegorzdec.tagmango.tools.databinding.bindable
+import kotlinx.coroutines.launch
 
-class MealItemViewModel : BaseViewModel() {
+class MealItemViewModel(private val repository: Repository) : BaseViewModel() {
 
     @get:Bindable
     var meal: Meal? by bindable(null)
@@ -17,4 +20,22 @@ class MealItemViewModel : BaseViewModel() {
     @get:Bindable("meal")
     val description
         get() = meal?.description
+
+    @get:Bindable
+    var like = false
+        set(value) {
+            if (field != value) {
+                field = value
+                updateLike(value)
+            }
+        }
+
+    @UiThread
+    private fun updateLike(value: Boolean) {
+        scope.launch {
+            meal?.let {
+                repository.setLike(it.id, value)
+            }
+        }
+    }
 }

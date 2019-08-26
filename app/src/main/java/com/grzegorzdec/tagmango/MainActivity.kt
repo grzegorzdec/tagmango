@@ -4,13 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.integration.android.IntentIntegrator
-import com.grzegorzdec.tagmango.api.Api
-import com.grzegorzdec.tagmango.api.Service
-import com.grzegorzdec.tagmango.model.Meal
 import com.grzegorzdec.tagmango.qr.show.QrShowDialogFragment
 import com.grzegorzdec.tagmango.tools.Toaster
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.*
 
 
 class MainActivity : AppCompatActivity() {

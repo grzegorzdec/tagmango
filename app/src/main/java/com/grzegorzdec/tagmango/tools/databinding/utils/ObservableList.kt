@@ -1,4 +1,4 @@
-package com.midrive.databinding.utils
+package com.grzegorzdec.tagmango.tools.databinding.utils
 
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList

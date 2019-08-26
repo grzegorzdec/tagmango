@@ -1,4 +1,4 @@
-package com.grzegorzdec.tagmango.api
+package com.grzegorzdec.tagmango.repository
 
 import com.grzegorzdec.tagmango.model.Client
 import com.grzegorzdec.tagmango.model.Meal

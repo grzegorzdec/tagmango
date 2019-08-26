@@ -1,6 +1,6 @@
 package com.grzegorzdec.tagmango
 
-import com.midrive.databinding.ObservableViewModel
+import com.grzegorzdec.tagmango.tools.databinding.ObservableViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

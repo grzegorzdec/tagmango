@@ -1,4 +1,4 @@
-package com.grzegorzdec.tagmango.api
+package com.grzegorzdec.tagmango.repository
 
 import com.grzegorzdec.tagmango.BuildConfig
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
